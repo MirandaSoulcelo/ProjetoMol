@@ -1,0 +1,15 @@
+C:\src\TheProject\Core\TheProject.Application\bin\Debug\net8.0\TheProject.Application.deps.json
+C:\src\TheProject\Core\TheProject.Application\bin\Debug\net8.0\TheProject.Application.dll
+C:\src\TheProject\Core\TheProject.Application\bin\Debug\net8.0\TheProject.Application.pdb
+C:\src\TheProject\Core\TheProject.Application\bin\Debug\net8.0\TheProject.Domain.dll
+C:\src\TheProject\Core\TheProject.Application\bin\Debug\net8.0\TheProject.Domain.pdb
+C:\src\TheProject\Core\TheProject.Application\obj\Debug\net8.0\TheProject.Application.csproj.AssemblyReference.cache
+C:\src\TheProject\Core\TheProject.Application\obj\Debug\net8.0\TheProject.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\src\TheProject\Core\TheProject.Application\obj\Debug\net8.0\TheProject.Application.AssemblyInfoInputs.cache
+C:\src\TheProject\Core\TheProject.Application\obj\Debug\net8.0\TheProject.Application.AssemblyInfo.cs
+C:\src\TheProject\Core\TheProject.Application\obj\Debug\net8.0\TheProject.Application.csproj.CoreCompileInputs.cache
+C:\src\TheProject\Core\TheProject.Application\obj\Debug\net8.0\TheProje.E85EE42E.Up2Date
+C:\src\TheProject\Core\TheProject.Application\obj\Debug\net8.0\TheProject.Application.dll
+C:\src\TheProject\Core\TheProject.Application\obj\Debug\net8.0\refint\TheProject.Application.dll
+C:\src\TheProject\Core\TheProject.Application\obj\Debug\net8.0\TheProject.Application.pdb
+C:\src\TheProject\Core\TheProject.Application\obj\Debug\net8.0\ref\TheProject.Application.dll

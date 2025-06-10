@@ -1,0 +1,132 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\src\\TheProject\\Core\\TheProject.Application\\TheProject.Application.csproj": {}
+  },
+  "projects": {
+    "C:\\src\\TheProject\\Core\\TheProject.Application\\TheProject.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\src\\TheProject\\Core\\TheProject.Application\\TheProject.Application.csproj",
+        "projectName": "TheProject.Application",
+        "projectPath": "C:\\src\\TheProject\\Core\\TheProject.Application\\TheProject.Application.csproj",
+        "packagesPath": "C:\\Users\\Matheus - DoubleIt\\.nuget\\packages\\",
+        "outputPath": "C:\\src\\TheProject\\Core\\TheProject.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Matheus - DoubleIt\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/carreiramuller/_packaging/carreiramuller/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\src\\TheProject\\Core\\TheProject.Domain\\TheProject.Domain.csproj": {
+                "projectPath": "C:\\src\\TheProject\\Core\\TheProject.Domain\\TheProject.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\src\\TheProject\\Core\\TheProject.Domain\\TheProject.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\src\\TheProject\\Core\\TheProject.Domain\\TheProject.Domain.csproj",
+        "projectName": "TheProject.Domain",
+        "projectPath": "C:\\src\\TheProject\\Core\\TheProject.Domain\\TheProject.Domain.csproj",
+        "packagesPath": "C:\\Users\\Matheus - DoubleIt\\.nuget\\packages\\",
+        "outputPath": "C:\\src\\TheProject\\Core\\TheProject.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Matheus - DoubleIt\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/carreiramuller/_packaging/carreiramuller/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
