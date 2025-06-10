@@ -37,6 +37,7 @@ builder.Services.AddAuthentication(options =>
         ClockSkew = TimeSpan.Zero
     };
 });
+builder.Services.AddSingleton<TokenService>(new TokenService("123"));
 
 builder.Services.AddAuthorization();
 // Add services to the container.
