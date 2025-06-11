@@ -3,10 +3,11 @@ using MediatR;
 using TheProject.Application.Handlers.Auth;
 
 
-
+/*
 
 public class LoginHandler : IRequestHandler<LoginRequest, LoginResponse>
 {
+    /*
     private readonly IUsuarioRepository _usuarioRepository;
     private readonly TokenService _tokenService;
 
@@ -37,4 +38,4 @@ public class LoginHandler : IRequestHandler<LoginRequest, LoginResponse>
 
         return new LoginResponse { Token = token };
     }
-}
+    */

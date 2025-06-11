@@ -1,5 +1,6 @@
 # Teste Desenvolvedor C#
 
+
    * O projeto foi criado usando o .net 8.0
    * Fique a vontade para usar um banco de dados local ou em memória, o importante é ter as implementações solicidas neste documento.
    * A estrutura do projeto já está pronta, basta implementar os recursos necessários para atender aos requisitos.

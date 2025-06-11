@@ -8,27 +8,25 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Matheus - DoubleIt\\.nuget\\packages\\": {}
+    "C:\\Users\\Marce\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\src\\TheProject\\Core\\TheProject.Domain\\TheProject.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Core\\TheProject.Domain\\TheProject.Domain.csproj",
       "projectName": "TheProject.Domain",
-      "projectPath": "C:\\src\\TheProject\\Core\\TheProject.Domain\\TheProject.Domain.csproj",
-      "packagesPath": "C:\\Users\\Matheus - DoubleIt\\.nuget\\packages\\",
-      "outputPath": "C:\\src\\TheProject\\Core\\TheProject.Domain\\obj\\",
+      "projectPath": "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Core\\TheProject.Domain\\TheProject.Domain.csproj",
+      "packagesPath": "C:\\Users\\Marce\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Core\\TheProject.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Matheus - DoubleIt\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Marce\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://pkgs.dev.azure.com/carreiramuller/_packaging/carreiramuller/nuget/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
@@ -66,7 +64,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
