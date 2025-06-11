@@ -2,6 +2,10 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Components;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
+using TheProject.Infrastructure.Data;
+
+
 
 
 
@@ -9,7 +13,10 @@ var builder = WebApplication.CreateBuilder(args);
 //Aqui estou definindo a chave 'secreta' para assinar o token
 var key = Encoding.ASCII.GetBytes("123");
 
-
+builder.Services.AddDbContext<AppDbContext>(options =>
+{
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+ });
 
 builder.Services.AddAuthentication(options =>
 {
