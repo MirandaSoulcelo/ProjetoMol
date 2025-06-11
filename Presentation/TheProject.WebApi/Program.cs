@@ -5,9 +5,9 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using TheProject.Infrastructure.Data;
 using TheProject.Application.Interfaces;
-using TheProject.Infrastructure.Services.Products;
-using TheProject.Infrastructure.Services.Users;
-using TheProject.Infrastructure.Services.Categories;
+using TheProject.Infrastructure.Services.Product;
+using TheProject.Infrastructure.Services.User;
+using TheProject.Infrastructure.Services.Categorie;
 
 
 
@@ -49,6 +49,9 @@ builder.Services.AddAuthentication(options =>
         ClockSkew = TimeSpan.Zero
     };
 });
+
+
+
 builder.Services.AddSingleton<TokenService>(new TokenService("123"));
 
 builder.Services.AddAuthorization();
