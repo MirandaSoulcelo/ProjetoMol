@@ -16,7 +16,10 @@
       },
       "TheProject.Domain/1.0.0": {
         "runtime": {
-          "TheProject.Domain.dll": {}
+          "TheProject.Domain.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
