@@ -16,7 +16,7 @@ using TheProject.Infrastructure.Services.Categorie;
 var builder = WebApplication.CreateBuilder(args);
 //Aqui estou definindo a chave 'secreta' para assinar o token
 var key = Encoding.ASCII.GetBytes("123");
-
+builder.Services.AddControllers();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
@@ -66,8 +66,13 @@ builder.Services.AddScoped<IProductsInterface, ProductsService>();
 builder.Services.AddScoped<IUsersInterface, UsersService>();
 builder.Services.AddScoped<ICategoriesInterface, CategoriesService>();
 
+
+
+
 var app = builder.Build();
 
+
+app.MapControllers();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

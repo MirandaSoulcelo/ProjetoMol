@@ -18,8 +18,6 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet("GetAll")]
-
-    //async pq temos qeu esperar e consequentemente um Task
     public async Task<ActionResult<Response<List<Products>>>> GetAll()
     {
         var products = await _productsInterface.GetAll();
