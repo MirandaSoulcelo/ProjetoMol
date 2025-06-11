@@ -4,6 +4,10 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using TheProject.Infrastructure.Data;
+using TheProject.Application.Interfaces;
+using TheProject.Infrastructure.Services.Products;
+using TheProject.Infrastructure.Services.Users;
+using TheProject.Infrastructure.Services.Categories;
 
 
 
@@ -12,6 +16,7 @@ using TheProject.Infrastructure.Data;
 var builder = WebApplication.CreateBuilder(args);
 //Aqui estou definindo a chave 'secreta' para assinar o token
 var key = Encoding.ASCII.GetBytes("123");
+
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
@@ -51,6 +56,12 @@ builder.Services.AddAuthorization();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
+//criando a forma de comunição entre interface e serviços
+builder.Services.AddScoped<IProductsInterface, ProductsService>();
+builder.Services.AddScoped<IUsersInterface, UsersService>();
+builder.Services.AddScoped<ICategoriesInterface, CategoriesService>();
 
 var app = builder.Build();
 
