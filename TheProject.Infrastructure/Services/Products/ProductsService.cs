@@ -23,21 +23,37 @@ namespace TheProject.Infrastructure.Services.Product
             _validator = validator;
         }
 
-         //por quê async?
-        public async Task<Response<List<Domain.Entities.Products>>> GetAll()
+        //por quê async?
+        public async Task<Response<List<ProductsDTO>>> GetAll(string? search = null, int page = 1, int pageSize = 10)
         {
-            Response<List<Products>> response = new Response<List<Products>>();
+            Response<List<ProductsDTO>> response = new Response<List<ProductsDTO>>();
+
             try
             {
-                //transformando em lista todos os produtos do banco e esperando pegar tudo para depois continuar
-                var products = await _context.Products.ToListAsync();
+                var query = _context.Products.AsQueryable();
 
+                // Filtro de busca no Name
+                if (!string.IsNullOrEmpty(search))
+                {
+                    query = query.Where(p => p.Name.Contains(search));
+                }
+
+                // Paginação
+                var products = await query
+                    .Skip((page - 1) * pageSize)
+                    .Take(pageSize)
+                    .Select(p => new ProductsDTO
+                    {
+                        Id = (int)p.Id,
+                        Name = p.Name,
+                        StockQuantity = p.StockQuantity
+                    })
+            .ToListAsync();
 
                 response.Data = products;
-                response.Message = "Produtos coletados";
+                response.Message = "Produtos coletados com filtro e paginação";
 
                 return response;
-
             }
             catch (Exception ex)
             {
@@ -115,6 +131,101 @@ namespace TheProject.Infrastructure.Services.Product
             return response;
         }
 
+        
+
+        public async Task<Response<Products>> Add(ProductUptadeDTO dto)
+        {
+            var response = new Response<Products>();
+
+            // Validação SINCRONA do DTO via FluentValidation (regras locais)
+            var validationResult = await _validator.ValidateAsync(dto);
+            if (!validationResult.IsValid)
+            {
+                response.Status = false;
+                response.Message = string.Join(" | ", validationResult.Errors.Select(e => e.ErrorMessage));
+                return response;
+            }
+
+
+            // Validações
+
+            /*
+            if (request.CategoryId <= 0)
+            {
+                response.Status = false;
+                response.Message = "Código da categoria não informado ou inválido";
+                return response;
+            }
+
+            */
+
+            /*
+            if (string.IsNullOrWhiteSpace(request.Name))
+            {
+                response.Status = false;
+                response.Message = "Nome não informado ou inválido";
+                return response;
+            }
+
+            */
+
+            /*
+            if (request.UnitPrice <= 0)
+            {
+                response.Status = false;
+                response.Message = "Preço Unitário não informado ou inválido";
+                return response;
+            }
+
+            */
+
+            /*
+            if (request.StockQuantity < 0)
+            {
+                response.Status = false;
+                response.Message = "Quantidade em estoque não informada ou inválida";
+                return response;
+            }
+
+            */
+
+            // Verifica se a categoria existe
+            var categoryExists = await _context.Categories.AnyAsync(c => c.Id == dto.CategoryId);
+            if (!categoryExists)
+            {
+                response.Status = false;
+                response.Message = "Categoria informada não encontrada";
+                return response;
+            }
+
+            // Verifica duplicidade pelo nome
+            var productExists = await _context.Products.AnyAsync(p => p.Name == dto.Name);
+            if (productExists)
+            {
+                response.Status = false;
+                response.Message = "Já existe um produto para o nome informado";
+                return response;
+            }
+
+            // Criar o produto
+            var product = new Products
+            {
+                CategoryId = dto.CategoryId,
+                Name = dto.Name,
+                UnitPrice = (double)dto.UnitPrice,
+                StockQuantity = dto.StockQuantity,
+                Status = dto.Status
+            };
+
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync();
+
+            response.Data = product;
+            response.Message = "Produto adicionado com sucesso";
+            return response;
+        }
+
+    
        
     }
 }
