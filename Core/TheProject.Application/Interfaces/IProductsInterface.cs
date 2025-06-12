@@ -13,6 +13,6 @@ namespace TheProject.Application.Interfaces
         Task<Response<Products>> GetById(int id);
         Task<Response<Products>> GetByCategoryId(int CategoryId);
         
-      
+        Task<Response<Products>> Update(long id, int categoryId, string name, decimal unitPrice, int stockQuantity, bool status);
     }
 }

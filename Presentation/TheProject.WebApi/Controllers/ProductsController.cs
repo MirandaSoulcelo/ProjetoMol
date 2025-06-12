@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using TheProject.Application.DTOs;
 using TheProject.Application.Interfaces;
 using TheProject.Domain.Entities;
 
@@ -24,4 +25,28 @@ public class ProductsController : ControllerBase
 
         return Ok(products);
     }
-}
+
+
+
+    // NOVO ENDPOINT UPDATE
+        [HttpPut("Update")]
+        public async Task<ActionResult<Response<Products>>> Update([FromBody] UpdateProductRequest request)
+        {
+            var result = await _productsInterface.Update(
+                request.Id,
+                request.CategoryId,
+                request.Name,
+                request.UnitPrice,
+                request.StockQuantity,
+                request.Status
+            );
+
+            if (!result.Status)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
+        }
+    }
+
