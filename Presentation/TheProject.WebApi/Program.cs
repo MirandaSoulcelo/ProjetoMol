@@ -7,7 +7,7 @@ using TheProject.Infrastructure.Data;
 using TheProject.Application.Interfaces;
 using TheProject.Infrastructure.Services.Product;
 using TheProject.Infrastructure.Services.User;
-using TheProject.Infrastructure.Services.Categorie;
+using TheProject.Infrastructure.Services.Categories;
 
 
 

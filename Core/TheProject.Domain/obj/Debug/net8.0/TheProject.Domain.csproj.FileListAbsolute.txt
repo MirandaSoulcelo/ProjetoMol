@@ -21,3 +21,15 @@ C:\Users\Marce\OneDrive\Documents\ProjetoMOl\ProjetoMol\Core\TheProject.Domain\o
 C:\Users\Marce\OneDrive\Documents\ProjetoMOl\ProjetoMol\Core\TheProject.Domain\obj\Debug\net8.0\refint\TheProject.Domain.dll
 C:\Users\Marce\OneDrive\Documents\ProjetoMOl\ProjetoMol\Core\TheProject.Domain\obj\Debug\net8.0\TheProject.Domain.pdb
 C:\Users\Marce\OneDrive\Documents\ProjetoMOl\ProjetoMol\Core\TheProject.Domain\obj\Debug\net8.0\ref\TheProject.Domain.dll
+C:\Users\marcelo.miranda\Documents\Project\ProjetoMol\Core\TheProject.Domain\bin\Debug\net8.0\TheProject.Domain.deps.json
+C:\Users\marcelo.miranda\Documents\Project\ProjetoMol\Core\TheProject.Domain\bin\Debug\net8.0\TheProject.Domain.dll
+C:\Users\marcelo.miranda\Documents\Project\ProjetoMol\Core\TheProject.Domain\bin\Debug\net8.0\TheProject.Domain.pdb
+C:\Users\marcelo.miranda\Documents\Project\ProjetoMol\Core\TheProject.Domain\obj\Debug\net8.0\TheProject.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\marcelo.miranda\Documents\Project\ProjetoMol\Core\TheProject.Domain\obj\Debug\net8.0\TheProject.Domain.AssemblyInfoInputs.cache
+C:\Users\marcelo.miranda\Documents\Project\ProjetoMol\Core\TheProject.Domain\obj\Debug\net8.0\TheProject.Domain.AssemblyInfo.cs
+C:\Users\marcelo.miranda\Documents\Project\ProjetoMol\Core\TheProject.Domain\obj\Debug\net8.0\TheProject.Domain.csproj.CoreCompileInputs.cache
+C:\Users\marcelo.miranda\Documents\Project\ProjetoMol\Core\TheProject.Domain\obj\Debug\net8.0\TheProject.Domain.sourcelink.json
+C:\Users\marcelo.miranda\Documents\Project\ProjetoMol\Core\TheProject.Domain\obj\Debug\net8.0\TheProject.Domain.dll
+C:\Users\marcelo.miranda\Documents\Project\ProjetoMol\Core\TheProject.Domain\obj\Debug\net8.0\refint\TheProject.Domain.dll
+C:\Users\marcelo.miranda\Documents\Project\ProjetoMol\Core\TheProject.Domain\obj\Debug\net8.0\TheProject.Domain.pdb
+C:\Users\marcelo.miranda\Documents\Project\ProjetoMol\Core\TheProject.Domain\obj\Debug\net8.0\ref\TheProject.Domain.dll

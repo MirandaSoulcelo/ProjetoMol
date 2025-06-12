@@ -1,33 +1,35 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Core\\TheProject.Application\\TheProject.Application.csproj": {}
+    "C:\\Users\\marcelo.miranda\\Documents\\Project\\ProjetoMol\\Core\\TheProject.Application\\TheProject.Application.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Core\\TheProject.Application\\TheProject.Application.csproj": {
+    "C:\\Users\\marcelo.miranda\\Documents\\Project\\ProjetoMol\\Core\\TheProject.Application\\TheProject.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Core\\TheProject.Application\\TheProject.Application.csproj",
+        "projectUniqueName": "C:\\Users\\marcelo.miranda\\Documents\\Project\\ProjetoMol\\Core\\TheProject.Application\\TheProject.Application.csproj",
         "projectName": "TheProject.Application",
-        "projectPath": "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Core\\TheProject.Application\\TheProject.Application.csproj",
-        "packagesPath": "C:\\Users\\Marce\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Core\\TheProject.Application\\obj\\",
+        "projectPath": "C:\\Users\\marcelo.miranda\\Documents\\Project\\ProjetoMol\\Core\\TheProject.Application\\TheProject.Application.csproj",
+        "packagesPath": "C:\\Users\\marcelo.miranda\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\marcelo.miranda\\Documents\\Project\\ProjetoMol\\Core\\TheProject.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Marce\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\marcelo.miranda\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Core\\TheProject.Domain\\TheProject.Domain.csproj": {
-                "projectPath": "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Core\\TheProject.Domain\\TheProject.Domain.csproj"
+              "C:\\Users\\marcelo.miranda\\Documents\\Project\\ProjetoMol\\Core\\TheProject.Domain\\TheProject.Domain.csproj": {
+                "projectPath": "C:\\Users\\marcelo.miranda\\Documents\\Project\\ProjetoMol\\Core\\TheProject.Domain\\TheProject.Domain.csproj"
               }
             }
           }
@@ -72,26 +74,28 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.411/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Core\\TheProject.Domain\\TheProject.Domain.csproj": {
+    "C:\\Users\\marcelo.miranda\\Documents\\Project\\ProjetoMol\\Core\\TheProject.Domain\\TheProject.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Core\\TheProject.Domain\\TheProject.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\marcelo.miranda\\Documents\\Project\\ProjetoMol\\Core\\TheProject.Domain\\TheProject.Domain.csproj",
         "projectName": "TheProject.Domain",
-        "projectPath": "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Core\\TheProject.Domain\\TheProject.Domain.csproj",
-        "packagesPath": "C:\\Users\\Marce\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Core\\TheProject.Domain\\obj\\",
+        "projectPath": "C:\\Users\\marcelo.miranda\\Documents\\Project\\ProjetoMol\\Core\\TheProject.Domain\\TheProject.Domain.csproj",
+        "packagesPath": "C:\\Users\\marcelo.miranda\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\marcelo.miranda\\Documents\\Project\\ProjetoMol\\Core\\TheProject.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Marce\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\marcelo.miranda\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -130,7 +134,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.411/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
