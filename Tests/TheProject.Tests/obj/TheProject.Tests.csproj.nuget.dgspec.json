@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Tests\\TheProject.Tests\\TheProject.Tests.csproj": {}
+    "C:\\Users\\Marce\\OneDrive\\Documents\\BackupProjetoMol\\ProjetoMol\\Tests\\TheProject.Tests\\TheProject.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Core\\TheProject.Application\\TheProject.Application.csproj": {
+    "C:\\Users\\Marce\\OneDrive\\Documents\\BackupProjetoMol\\ProjetoMol\\Core\\TheProject.Application\\TheProject.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Core\\TheProject.Application\\TheProject.Application.csproj",
+        "projectUniqueName": "C:\\Users\\Marce\\OneDrive\\Documents\\BackupProjetoMol\\ProjetoMol\\Core\\TheProject.Application\\TheProject.Application.csproj",
         "projectName": "TheProject.Application",
-        "projectPath": "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Core\\TheProject.Application\\TheProject.Application.csproj",
+        "projectPath": "C:\\Users\\Marce\\OneDrive\\Documents\\BackupProjetoMol\\ProjetoMol\\Core\\TheProject.Application\\TheProject.Application.csproj",
         "packagesPath": "C:\\Users\\Marce\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Core\\TheProject.Application\\obj\\",
+        "outputPath": "C:\\Users\\Marce\\OneDrive\\Documents\\BackupProjetoMol\\ProjetoMol\\Core\\TheProject.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Marce\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -26,8 +26,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Core\\TheProject.Domain\\TheProject.Domain.csproj": {
-                "projectPath": "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Core\\TheProject.Domain\\TheProject.Domain.csproj"
+              "C:\\Users\\Marce\\OneDrive\\Documents\\BackupProjetoMol\\ProjetoMol\\Core\\TheProject.Domain\\TheProject.Domain.csproj": {
+                "projectPath": "C:\\Users\\Marce\\OneDrive\\Documents\\BackupProjetoMol\\ProjetoMol\\Core\\TheProject.Domain\\TheProject.Domain.csproj"
               }
             }
           }
@@ -47,6 +47,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[11.3.1, )"
+            },
             "MediatR": {
               "target": "Package",
               "version": "[12.5.0, )"
@@ -76,14 +84,14 @@
         }
       }
     },
-    "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Core\\TheProject.Domain\\TheProject.Domain.csproj": {
+    "C:\\Users\\Marce\\OneDrive\\Documents\\BackupProjetoMol\\ProjetoMol\\Core\\TheProject.Domain\\TheProject.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Core\\TheProject.Domain\\TheProject.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Marce\\OneDrive\\Documents\\BackupProjetoMol\\ProjetoMol\\Core\\TheProject.Domain\\TheProject.Domain.csproj",
         "projectName": "TheProject.Domain",
-        "projectPath": "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Core\\TheProject.Domain\\TheProject.Domain.csproj",
+        "projectPath": "C:\\Users\\Marce\\OneDrive\\Documents\\BackupProjetoMol\\ProjetoMol\\Core\\TheProject.Domain\\TheProject.Domain.csproj",
         "packagesPath": "C:\\Users\\Marce\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Core\\TheProject.Domain\\obj\\",
+        "outputPath": "C:\\Users\\Marce\\OneDrive\\Documents\\BackupProjetoMol\\ProjetoMol\\Core\\TheProject.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Marce\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -134,14 +142,14 @@
         }
       }
     },
-    "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Tests\\TheProject.Tests\\TheProject.Tests.csproj": {
+    "C:\\Users\\Marce\\OneDrive\\Documents\\BackupProjetoMol\\ProjetoMol\\Tests\\TheProject.Tests\\TheProject.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Tests\\TheProject.Tests\\TheProject.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\Marce\\OneDrive\\Documents\\BackupProjetoMol\\ProjetoMol\\Tests\\TheProject.Tests\\TheProject.Tests.csproj",
         "projectName": "TheProject.Tests",
-        "projectPath": "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Tests\\TheProject.Tests\\TheProject.Tests.csproj",
+        "projectPath": "C:\\Users\\Marce\\OneDrive\\Documents\\BackupProjetoMol\\ProjetoMol\\Tests\\TheProject.Tests\\TheProject.Tests.csproj",
         "packagesPath": "C:\\Users\\Marce\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Tests\\TheProject.Tests\\obj\\",
+        "outputPath": "C:\\Users\\Marce\\OneDrive\\Documents\\BackupProjetoMol\\ProjetoMol\\Tests\\TheProject.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Marce\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -156,8 +164,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Core\\TheProject.Application\\TheProject.Application.csproj": {
-                "projectPath": "C:\\Users\\Marce\\OneDrive\\Documents\\ProjetoMOl\\ProjetoMol\\Core\\TheProject.Application\\TheProject.Application.csproj"
+              "C:\\Users\\Marce\\OneDrive\\Documents\\BackupProjetoMol\\ProjetoMol\\Core\\TheProject.Application\\TheProject.Application.csproj": {
+                "projectPath": "C:\\Users\\Marce\\OneDrive\\Documents\\BackupProjetoMol\\ProjetoMol\\Core\\TheProject.Application\\TheProject.Application.csproj"
               }
             }
           }

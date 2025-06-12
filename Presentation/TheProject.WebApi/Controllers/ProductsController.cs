@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+using TheProject.Application.DTOs;
 using TheProject.Application.Interfaces;
 using TheProject.Domain.Entities;
+using TheProject.Infrastructure.Services.Product;
+using TheProject.Application.DTOs;
 
 namespace TheProject.WebApi.Controllers;
 
@@ -17,11 +20,41 @@ public class ProductsController : ControllerBase
         _productsInterface = productsInterface;
     }
 
-    [HttpGet("GetAll")]
-    public async Task<ActionResult<Response<List<Products>>>> GetAll()
-    {
-        var products = await _productsInterface.GetAll();
 
+
+    [HttpGet("GetAll")]
+    public async Task<ActionResult<Response<List<ProductsDTO>>>> GetAll(
+     [FromQuery] string? search = null,
+     [FromQuery] int page = 1,
+     [FromQuery] int pageSize = 10)
+    {
+        var products = await _productsInterface.GetAll(search, page, pageSize);
         return Ok(products);
     }
+
+    [HttpPut("Update")]
+    public async Task<IActionResult> Update([FromBody] ProductUptadeDTO dto)
+    {
+        // dto.Id = id; 
+
+        var result = await _productsInterface.Update(dto);
+        if (!result.Status)
+            return BadRequest(result.Message);
+
+        return Ok(result);
+    }
+    
+
+    [HttpPost("Add")]
+    public async Task<ActionResult<Response<Products>>> Add([FromBody] ProductUptadeDTO dto)
+    {
+        var result = await _productsInterface.Add(dto);
+        if (!result.Status)
+        {
+            return BadRequest(result.Message);
+        }
+        return Ok(result);
+    }
+
 }
+

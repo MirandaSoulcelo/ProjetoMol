@@ -7,10 +7,16 @@ using TheProject.Infrastructure.Data;
 using TheProject.Application.Interfaces;
 using TheProject.Infrastructure.Services.Product;
 using TheProject.Infrastructure.Services.User;
-using TheProject.Infrastructure.Services.Categorie;
+using TheProject.Infrastructure.Services.Categories;
+using FluentValidation.AspNetCore;
+using FluentValidation;
 
 
-
+/*
+cd caminho/para/TheProject.WebApi
+dotnet add package FluentValidation
+dotnet add package FluentValidation.AspNetCore só lembrando os pacotes que usei pra validar erros
+*/
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -51,6 +57,13 @@ builder.Services.AddAuthentication(options =>
 });
 
 
+builder.Services
+    .AddFluentValidationAutoValidation() // ativa a validação automática no pipeline
+    .AddFluentValidationClientsideAdapters(); // ativa suporte à validação client-side (opcional, útil se tiver front-end Razor/Blazor)
+
+builder.Services.AddValidatorsFromAssemblyContaining<ProductUpdateValidator>(); // registra os validators
+
+
 
 builder.Services.AddSingleton<TokenService>(new TokenService("123"));
 
@@ -72,16 +85,28 @@ builder.Services.AddScoped<ICategoriesInterface, CategoriesService>();
 var app = builder.Build();
 
 
-app.MapControllers();
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
+
+app.MapGet("/", context =>
+{
+    context.Response.Redirect("/swagger");
+    return Task.CompletedTask;
+});
+
+
 app.UseHttpsRedirection();
 app.UseRouting();
+
+
+app.MapControllers();
+// Configure the HTTP request pipeline.
+
 
 app.Run();
 
