@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using TheProject.Application.DTOs;
 using TheProject.Application.Interfaces;
 using TheProject.Domain.Entities;
+using TheProject.Infrastructure.Services.Product;
+using TheProject.Application.DTOs;
 
 namespace TheProject.WebApi.Controllers;
 
@@ -11,9 +13,9 @@ namespace TheProject.WebApi.Controllers;
 public class ProductsController : ControllerBase
 {
 
-
+    
     private readonly IProductsInterface _productsInterface;
-    public ProductsController(IProductsInterface productsInterface)
+    public ProductsController(IProductsInterface productsInterface )
     {
         _productsInterface = productsInterface;
     }
@@ -27,26 +29,17 @@ public class ProductsController : ControllerBase
     }
 
 
+    [HttpPut("Update")]
+    public async Task<IActionResult> Update([FromBody] ProductUptadeDTO dto)
+    {
+       // dto.Id = id; 
 
-    // NOVO ENDPOINT UPDATE
-        [HttpPut("Update")]
-        public async Task<ActionResult<Response<Products>>> Update([FromBody] UpdateProductRequest request)
-        {
-            var result = await _productsInterface.Update(
-                request.Id,
-                request.CategoryId,
-                request.Name,
-                request.UnitPrice,
-                request.StockQuantity,
-                request.Status
-            );
+        var result = await _productsInterface.Update(dto);
+        if (!result.Status)
+            return BadRequest(result.Message);
 
-            if (!result.Status)
-            {
-                return BadRequest(result);
-            }
+        return Ok(result);
+    }
 
-            return Ok(result);
-        }
     }
 

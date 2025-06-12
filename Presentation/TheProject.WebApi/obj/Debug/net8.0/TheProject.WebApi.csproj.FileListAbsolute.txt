@@ -389,3 +389,6 @@ C:\Users\marcelo.miranda\Documents\Project\ProjetoMol\Presentation\TheProject.We
 C:\Users\marcelo.miranda\Documents\Project\ProjetoMol\Presentation\TheProject.WebApi\obj\Debug\net8.0\TheProject.WebApi.pdb
 C:\Users\marcelo.miranda\Documents\Project\ProjetoMol\Presentation\TheProject.WebApi\obj\Debug\net8.0\TheProject.WebApi.genruntimeconfig.cache
 C:\Users\marcelo.miranda\Documents\Project\ProjetoMol\Presentation\TheProject.WebApi\obj\Debug\net8.0\ref\TheProject.WebApi.dll
+C:\Users\marcelo.miranda\Documents\Project\ProjetoMol\Presentation\TheProject.WebApi\bin\Debug\net8.0\FluentValidation.dll
+C:\Users\marcelo.miranda\Documents\Project\ProjetoMol\Presentation\TheProject.WebApi\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
+C:\Users\marcelo.miranda\Documents\Project\ProjetoMol\Presentation\TheProject.WebApi\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll

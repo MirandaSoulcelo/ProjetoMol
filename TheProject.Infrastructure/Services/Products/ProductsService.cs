@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
+using TheProject.Application.DTOs;
 using TheProject.Application.Interfaces;
 using TheProject.Domain.Entities;
 using TheProject.Infrastructure.Data;
@@ -13,11 +15,13 @@ namespace TheProject.Infrastructure.Services.Product
     {
 
         private readonly AppDbContext _context;
+        private readonly IValidator<ProductUptadeDTO> _validator;
 
-        public ProductsService(AppDbContext context)
+        public ProductsService(AppDbContext context, IValidator<ProductUptadeDTO> validator)
         {
             _context = context;
-         }
+            _validator = validator;
+        }
 
          //por quê async?
         public async Task<Response<List<Domain.Entities.Products>>> GetAll()
@@ -55,110 +59,63 @@ namespace TheProject.Infrastructure.Services.Product
 
 
 
-
-
-
-
-
-         public async Task<Response<Products>> Update(long id, int categoryId, string name, decimal unitPrice, int stockQuantity, bool status)
+        public async Task<Response<Products>> Update(ProductUptadeDTO dto)
         {
-            Response<Products> response = new Response<Products>();
-            try
+            var response = new Response<Products>();
+
+            // Validação SINCRONA do DTO via FluentValidation (regras locais)
+            var validationResult = await _validator.ValidateAsync(dto);
+            if (!validationResult.IsValid)
             {
-                // VALIDAÇÃO 1: ID do produto
-                if (id <= 0)
-                {
-                    response.Message = "Código do produto não informado ou inválido";
-                    response.Status = false;
-                    return response;
-                }
-
-                // VALIDAÇÃO 2: CategoryId
-                if (categoryId <= 0)
-                {
-                    response.Message = "Código da categoria não informado ou inválido";
-                    response.Status = false;
-                    return response;
-                }
-
-                // VALIDAÇÃO 3: Nome preenchido
-                if (string.IsNullOrWhiteSpace(name))
-                {
-                    response.Message = "Nome não informado ou inválido";
-                    response.Status = false;
-                    return response;
-                }
-
-                // VALIDAÇÃO 4: UnitPrice maior que 0
-                if (unitPrice <= 0)
-                {
-                    response.Message = "Preço Unitário não informado ou inválido";
-                    response.Status = false;
-                    return response;
-                }
-
-                // VALIDAÇÃO 5: StockQuantity maior ou igual a 0
-                if (stockQuantity < 0)
-                {
-                    response.Message = "Quantidade em estoque não informada ou inválida";
-                    response.Status = false;
-                    return response;
-                }
-
-                // VALIDAÇÃO 6: Verificar se o produto existe
-                var existingProduct = await _context.Products.FindAsync(id);
-                if (existingProduct == null)
-                {
-                    response.Message = "Produto informado não encontrado";
-                    response.Status = false;
-                    return response;
-                }
-
-                // VALIDAÇÃO 7: Verificar se a categoria existe
-                var categoryExists = await _context.Categories.AnyAsync(c => c.Id == categoryId);
-                if (!categoryExists)
-                {
-                    response.Message = "Categoria informada não encontrada";
-                    response.Status = false;
-                    return response;
-                }
-
-                // VALIDAÇÃO 8: Verificar duplicidade de nome (excluindo o produto atual)
-                var duplicateProduct = await _context.Products
-                    .FirstOrDefaultAsync(p => p.Name.ToLower() == name.ToLower() && p.Id != id);
-                
-                if (duplicateProduct != null)
-                {
-                    response.Message = "Já existe um produto para o nome informado";
-                    response.Status = false;
-                    return response;
-                }
-
-                // ATUALIZAR O PRODUTO
-                existingProduct.CategoryId = categoryId;
-                existingProduct.Name = name.Trim();
-                existingProduct.UnitPrice = (double)unitPrice;
-                existingProduct.StockQuantity = stockQuantity;
-                existingProduct.Status = status;
-                //existingProduct.UpdatedAt = DateTime.UtcNow;
-
-                // Salvar no banco
-                await _context.SaveChangesAsync();
-
-                // Retornar o produto atualizado
-                response.Data = existingProduct;
-                response.Message = "Produto atualizado com sucesso";
-                response.Status = true;
-
-                return response;
-            }
-            catch (Exception ex)
-            {
-                response.Message = ex.Message;
                 response.Status = false;
+                response.Message = string.Join(" | ", validationResult.Errors.Select(e => e.ErrorMessage));
                 return response;
             }
+
+            // Validação ASSÍNCRONA: Produto existe?
+            var product = await _context.Products.FindAsync(dto.Id);
+            if (product == null)
+            {
+                response.Status = false;
+                response.Message = "Produto informado não encontrado.";
+                return response;
+            }
+
+            // Validação ASSÍNCRONA: Categoria existe?
+            var categoryExists = await _context.Categories.AnyAsync(c => c.Id == dto.CategoryId);
+            if (!categoryExists)
+            {
+                response.Status = false;
+                response.Message = "Categoria informada não encontrada.";
+                return response;
+            }
+
+            // Validação ASSÍNCRONA: Nome duplicado (exceto o próprio produto)
+            var duplicateProduct = await _context.Products
+                .AnyAsync(p => p.Name.ToLower() == dto.Name.ToLower() && p.Id != dto.Id);
+            if (duplicateProduct)
+            {
+                response.Status = false;
+                response.Message = "Já existe um produto com o nome informado.";
+                return response;
+            }
+
+            // Atualizar produto
+            product.CategoryId = dto.CategoryId;
+            product.Name = dto.Name.Trim();
+            product.UnitPrice = (double)dto.UnitPrice;
+            product.StockQuantity = dto.StockQuantity;
+            product.Status = dto.Status;
+
+            await _context.SaveChangesAsync();
+
+            response.Data = product;
+            response.Message = "Produto atualizado com sucesso.";
+            response.Status = true;
+            return response;
         }
+
+       
     }
 }
     

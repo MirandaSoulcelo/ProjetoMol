@@ -8,9 +8,15 @@ using TheProject.Application.Interfaces;
 using TheProject.Infrastructure.Services.Product;
 using TheProject.Infrastructure.Services.User;
 using TheProject.Infrastructure.Services.Categories;
+using FluentValidation.AspNetCore;
+using FluentValidation;
 
 
-
+/*
+cd caminho/para/TheProject.WebApi
+dotnet add package FluentValidation
+dotnet add package FluentValidation.AspNetCore só lembrando os pacotes que usei pra validar erros
+*/
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -49,6 +55,13 @@ builder.Services.AddAuthentication(options =>
         ClockSkew = TimeSpan.Zero
     };
 });
+
+
+builder.Services
+    .AddFluentValidationAutoValidation() // ativa a validação automática no pipeline
+    .AddFluentValidationClientsideAdapters(); // ativa suporte à validação client-side (opcional, útil se tiver front-end Razor/Blazor)
+
+builder.Services.AddValidatorsFromAssemblyContaining<ProductUpdateValidator>(); // registra os validators
 
 
 
