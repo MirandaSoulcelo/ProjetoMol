@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using TheProject.Application.DTOs;
 using TheProject.Application.Interfaces;
+using TheProject.Application.Validators.Products;
 using TheProject.Domain.Entities;
 using TheProject.Infrastructure.Data;
 
@@ -63,17 +60,6 @@ namespace TheProject.Infrastructure.Services.Product
             }
         }
 
-        public Task<Response<Domain.Entities.Products>> GetByCategoryId(int CategoryId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Response<Domain.Entities.Products>> GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-
 
         public async Task<Response<Products>> Update(ProductUptadeDTO dto)
         {
@@ -88,7 +74,7 @@ namespace TheProject.Infrastructure.Services.Product
                 return response;
             }
 
-            // Validação ASSÍNCRONA: Produto existe?
+
             var product = await _context.Products.FindAsync(dto.Id);
             if (product == null)
             {
@@ -97,7 +83,6 @@ namespace TheProject.Infrastructure.Services.Product
                 return response;
             }
 
-            // Validação ASSÍNCRONA: Categoria existe?
             var categoryExists = await _context.Categories.AnyAsync(c => c.Id == dto.CategoryId);
             if (!categoryExists)
             {
@@ -106,7 +91,7 @@ namespace TheProject.Infrastructure.Services.Product
                 return response;
             }
 
-            // Validação ASSÍNCRONA: Nome duplicado (exceto o próprio produto)
+
             var duplicateProduct = await _context.Products
                 .AnyAsync(p => p.Name.ToLower() == dto.Name.ToLower() && p.Id != dto.Id);
             if (duplicateProduct)
@@ -131,8 +116,6 @@ namespace TheProject.Infrastructure.Services.Product
             return response;
         }
 
-        
-
         public async Task<Response<Products>> Add(ProductUptadeDTO dto)
         {
             var response = new Response<Products>();
@@ -146,50 +129,6 @@ namespace TheProject.Infrastructure.Services.Product
                 return response;
             }
 
-
-            // Validações
-
-            /*
-            if (request.CategoryId <= 0)
-            {
-                response.Status = false;
-                response.Message = "Código da categoria não informado ou inválido";
-                return response;
-            }
-
-            */
-
-            /*
-            if (string.IsNullOrWhiteSpace(request.Name))
-            {
-                response.Status = false;
-                response.Message = "Nome não informado ou inválido";
-                return response;
-            }
-
-            */
-
-            /*
-            if (request.UnitPrice <= 0)
-            {
-                response.Status = false;
-                response.Message = "Preço Unitário não informado ou inválido";
-                return response;
-            }
-
-            */
-
-            /*
-            if (request.StockQuantity < 0)
-            {
-                response.Status = false;
-                response.Message = "Quantidade em estoque não informada ou inválida";
-                return response;
-            }
-
-            */
-
-            // Verifica se a categoria existe
             var categoryExists = await _context.Categories.AnyAsync(c => c.Id == dto.CategoryId);
             if (!categoryExists)
             {
@@ -198,7 +137,7 @@ namespace TheProject.Infrastructure.Services.Product
                 return response;
             }
 
-            // Verifica duplicidade pelo nome
+
             var productExists = await _context.Products.AnyAsync(p => p.Name == dto.Name);
             if (productExists)
             {
@@ -224,9 +163,63 @@ namespace TheProject.Infrastructure.Services.Product
             response.Message = "Produto adicionado com sucesso";
             return response;
         }
+        
 
-    
-       
+        public async Task<Response<bool>> Delete(ProductDeleteDTO dto)
+        {
+            var response = new Response<bool>();
+            var allErrors = new List<string>();
+
+            try
+            {
+                // Validação do DTO via FluentValidation
+                var deleteValidator = new ProductDeleteValidator();
+                var validationResult = await deleteValidator.ValidateAsync(dto);
+                if (!validationResult.IsValid)
+                {
+                    allErrors.AddRange(validationResult.Errors.Select(e => e.ErrorMessage));
+                }
+
+                // Verificar se o produto existe (só se passou na validação básica)
+                Products product = null;
+                if (!allErrors.Any())
+                {
+                    product = await _context.Products.FindAsync(dto.Id);
+                    if (product == null)
+                    {
+                        allErrors.Add("Produto informado não encontrado");
+                    }
+                }
+
+                // Se houver erros, retornar todos
+                if (allErrors.Any())
+                {
+                    response.Status = false;
+                    response.Message = string.Join(" | ", allErrors);
+                    response.Data = false;
+                    return response;
+                }
+
+                // Excluir o produto do banco de dados
+                _context.Products.Remove(product);
+                await _context.SaveChangesAsync();
+
+                response.Data = true;
+                response.Message = "Produto excluído com sucesso";
+                response.Status = true;
+                return response;
+            }
+            catch (Exception ex)
+            {
+                response.Message = ex.Message;
+                response.Status = false;
+                response.Data = false;
+                return response;
+            }
+        }
+
+            
+            
     }
 }
     

@@ -43,7 +43,7 @@ public class ProductsController : ControllerBase
 
         return Ok(result);
     }
-    
+
 
     [HttpPost("Add")]
     public async Task<ActionResult<Response<Products>>> Add([FromBody] ProductUptadeDTO dto)
@@ -56,5 +56,33 @@ public class ProductsController : ControllerBase
         return Ok(result);
     }
 
+        
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete([FromBody] ProductDeleteDTO dto)
+        {
+            try
+            {
+                var result = await _productsInterface.Delete(dto);
+                
+                if (result.Status)
+                {
+                    return Ok(result);
+                }
+                else
+                {
+                    return BadRequest(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new Response<bool>
+                {
+                    Status = false,
+                    Message = $"Erro interno do servidor: {ex.Message}",
+                    Data = false
+                });
+            }
+        }
 }
 

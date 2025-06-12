@@ -10,6 +10,8 @@ using TheProject.Infrastructure.Services.User;
 using TheProject.Infrastructure.Services.Categories;
 using FluentValidation.AspNetCore;
 using FluentValidation;
+using TheProject.Application.DTOs;
+using TheProject.Application.Validators.Products;
 
 
 /*
@@ -62,6 +64,7 @@ builder.Services
     .AddFluentValidationClientsideAdapters(); // ativa suporte à validação client-side (opcional, útil se tiver front-end Razor/Blazor)
 
 builder.Services.AddValidatorsFromAssemblyContaining<ProductUpdateValidator>(); // registra os validators
+builder.Services.AddScoped<IValidator<ProductDeleteDTO>, ProductDeleteValidator>();
 
 
 
@@ -80,10 +83,20 @@ builder.Services.AddScoped<IUsersInterface, UsersService>();
 builder.Services.AddScoped<ICategoriesInterface, CategoriesService>();
 
 
-
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
 
 var app = builder.Build();
 
+
+app.UseCors();
 
 
 if (app.Environment.IsDevelopment())

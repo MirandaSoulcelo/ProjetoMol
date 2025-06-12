@@ -5,10 +5,16 @@ using TheProject.Application.DTOs;
 
   public class ProductUpdateValidator : AbstractValidator<ProductUptadeDTO>
 {   
-    public ProductUpdateValidator()
+    public ProductUpdateValidator(bool isUpdate = false)
     {
-        RuleFor(x => x.Id)
-            .GreaterThan(0).WithMessage("Código do produto inválido.");
+        
+
+         
+        if (isUpdate)
+        {
+            RuleFor(x => x.Id)
+                .GreaterThan(0).WithMessage("Coloque um Id válido para o produto.");
+        }
 
         RuleFor(x => x.CategoryId)
             .GreaterThan(0).WithMessage("Código da categoria inválido.");
