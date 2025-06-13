@@ -159,11 +159,16 @@ namespace TheProject.Infrastructure.Services.User
             user.Name = dto.Name.Trim();
             user.Email = dto.Email;
             user.Password = dto.Password;
+            user.Ativo = dto.Ativo;
+
+            var passwordHasher = new PasswordHasher<Users>();
+                // Gerar o hash com a senha do DTO
+            user.Password = passwordHasher.HashPassword(user, dto.Password);
 
             await _context.SaveChangesAsync();
 
             response.Data = user;
-            response.Message = "Produto atualizado com sucesso.";
+            response.Message = "Usuário atualizado com sucesso.";
             response.Status = true;
             return response;
         }
