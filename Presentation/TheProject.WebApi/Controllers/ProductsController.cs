@@ -2,11 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 using TheProject.Application.DTOs;
 using TheProject.Application.Interfaces;
 using TheProject.Domain.Entities;
-using TheProject.Infrastructure.Services.Product;
-using TheProject.Application.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TheProject.WebApi.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 [Produces("application/json")]
@@ -56,33 +56,34 @@ public class ProductsController : ControllerBase
         return Ok(result);
     }
 
-        
 
-        [HttpDelete]
+
+    [HttpDelete]
+    [Authorize]
         public async Task<IActionResult> Delete([FromBody] ProductDeleteDTO dto)
+    {
+        try
         {
-            try
+            var result = await _productsInterface.Delete(dto);
+
+            if (result.Status)
             {
-                var result = await _productsInterface.Delete(dto);
-                
-                if (result.Status)
-                {
-                    return Ok(result);
-                }
-                else
-                {
-                    return BadRequest(result);
-                }
+                return Ok(result);
             }
-            catch (Exception ex)
+            else
             {
-                return StatusCode(500, new Response<bool>
-                {
-                    Status = false,
-                    Message = $"Erro interno do servidor: {ex.Message}",
-                    Data = false
-                });
+                return BadRequest(result);
             }
         }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new Response<bool>
+            {
+                Status = false,
+                Message = $"Erro interno do servidor: {ex.Message}",
+                Data = false
+            });
+        }
+    }
 }
 

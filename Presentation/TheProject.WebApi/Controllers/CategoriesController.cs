@@ -2,9 +2,13 @@ using Microsoft.AspNetCore.Mvc;
 using TheProject.Application.DTOs;
 using TheProject.Application.Interfaces;
 using TheProject.Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace TheProject.WebApi.Controllers
-{
+
+
+{   [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     [Produces("application/json")]
@@ -28,12 +32,12 @@ namespace TheProject.WebApi.Controllers
         public async Task<ActionResult<Response<CategoryDto>>> Add([FromBody] AddCategoryRequest request)
         {
             var result = await _categoriesInterface.Add(request.Name);
-            
+
             if (!result.Status)
             {
                 return BadRequest(result);
             }
-            
+
             return Ok(result);
         }
     }

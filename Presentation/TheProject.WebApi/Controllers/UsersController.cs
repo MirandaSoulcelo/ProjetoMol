@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TheProject.Application.DTOs.UsersDTO;
 using TheProject.Application.Interfaces;
@@ -43,6 +44,7 @@ public class UsersController : ControllerBase
 
 
     [HttpPut("Update")]
+    [Authorize]
     public async Task<IActionResult> Update([FromBody] UsersDTO dto)
     {
         // dto.Id = id; 
@@ -55,7 +57,9 @@ public class UsersController : ControllerBase
     }
 
 
+
     [HttpDelete]
+    [Authorize]
     public async Task<IActionResult> Delete([FromBody] UserDeleteDTO dto)
     {
         try

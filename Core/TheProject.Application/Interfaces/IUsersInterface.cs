@@ -12,5 +12,7 @@ namespace TheProject.Application.Interfaces
         Task<Response<Users>> Update(UsersDTO dto);
 
         Task<Response<bool>> Delete(UserDeleteDTO dto);
+
+        Task<Users?> GetUserByEmailAndPasswordAsync(string email, string password);
     }
 }

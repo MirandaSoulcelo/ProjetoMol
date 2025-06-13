@@ -167,7 +167,7 @@ namespace TheProject.Infrastructure.Services.User
             response.Status = true;
             return response;
         }
-        
+
 
 
 
@@ -186,7 +186,7 @@ namespace TheProject.Infrastructure.Services.User
                     allErrors.AddRange(validationResult.Errors.Select(e => e.ErrorMessage));
                 }
 
-      
+
                 Users user = null;
                 if (!allErrors.Any())
                 {
@@ -227,5 +227,38 @@ namespace TheProject.Infrastructure.Services.User
                 return response;
             }
         }
-    }
+
+
+
+
+
+        public async Task<Domain.Entities.Users?> GetUserByEmailAndPasswordAsync(string email, string password)
+        {
+            try
+            {
+                // Primeiro, busca o usuário apenas pelo email
+                var user = await _context.Users
+                    .FirstOrDefaultAsync(u => u.Email == email);
+
+                // Se não encontrou o usuário, retorna null
+                if (user == null)
+                    return null;
+
+                // Cria uma instância do PasswordHasher
+                var passwordHasher = new PasswordHasher<Users>();
+
+                // Verifica se a senha informada confere com o hash salvo
+                var result = passwordHasher.VerifyHashedPassword(user, user.Password, password);
+
+                // Se a senha não confere, retorna null
+                if (result != PasswordVerificationResult.Success)
+                    return null;
+
+                return user;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+    }  }
 }

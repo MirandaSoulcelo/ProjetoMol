@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Components;
+
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
@@ -25,7 +25,11 @@ dotnet add package FluentValidation.AspNetCore só lembrando os pacotes que usei
 
 var builder = WebApplication.CreateBuilder(args);
 //Aqui estou definindo a chave 'secreta' para assinar o token
-var key = Encoding.ASCII.GetBytes("123");
+var secretKey = builder.Configuration["Jwt:SecretKey"];
+var key = Encoding.ASCII.GetBytes(secretKey);
+
+
+
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -72,7 +76,47 @@ builder.Services.AddScoped<IValidator<UserDeleteDTO>, UsersDeleteValidator>();
 
 
 
-builder.Services.AddSingleton<TokenService>(new TokenService("123"));
+
+
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new() { Title = "TheProject.WebApi", Version = "v1" });
+
+    // Configura o Swagger para usar JWT
+    c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+    {
+        Description = @"JWT Authorization header usando o esquema Bearer. 
+                        Exemplo: 'Bearer {seu_token_jwt}'",
+        Name = "Authorization",
+        In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+        Type = Microsoft.OpenApi.Models.SecuritySchemeType.ApiKey,
+        Scheme = "Bearer"
+    });
+
+    c.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement()
+    {
+        {
+            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+            {
+                Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                {
+                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                },
+                Scheme = "oauth2",
+                Name = "Bearer",
+                In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+            },
+            new List<string>()
+        }
+    });
+});
+
+
+
+
+
+builder.Services.AddScoped<TokenService>(provider => new TokenService(secretKey));
 
 builder.Services.AddAuthorization();
 // Add services to the container.
@@ -119,6 +163,10 @@ app.MapGet("/", context =>
 
 app.UseHttpsRedirection();
 app.UseRouting();
+
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 
 app.MapControllers();
