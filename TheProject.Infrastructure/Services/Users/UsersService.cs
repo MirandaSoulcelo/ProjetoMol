@@ -34,7 +34,8 @@ namespace TheProject.Infrastructure.Services.User
                     .Select(u => new UsersDTO
                     {
                         Id = (int)u.Id,
-                        Name = u.Name
+                        Name = u.Name,
+                        Email = u.Email
                     })
                     .ToListAsync();
 
