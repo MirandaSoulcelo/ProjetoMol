@@ -35,7 +35,7 @@ public class ProductsController : ControllerBase
     [HttpPut("Update")]
     public async Task<IActionResult> Update([FromBody] ProductUptadeDTO dto)
     {
-        // dto.Id = id; 
+        
 
         var result = await _productsInterface.Update(dto);
         if (!result.Status)

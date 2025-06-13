@@ -94,7 +94,7 @@ namespace TheProject.Infrastructure.Services.User
                 _context.Users.Add(newUser);
                 await _context.SaveChangesAsync();
 
-                // Retornar o User (apenas Id e Name)
+                // Retornar o User 
                 response.Data = new UsersDTO
                 {
                     Id = (int)newUser.Id,
@@ -181,6 +181,9 @@ namespace TheProject.Infrastructure.Services.User
             var response = new Response<bool>();
             var allErrors = new List<string>();
 
+
+            
+
             try
             {
                 // Validação do DTO via FluentValidation
@@ -237,15 +240,16 @@ namespace TheProject.Infrastructure.Services.User
 
 
 
-        public async Task<Domain.Entities.Users?> GetUserByEmailAndPasswordAsync(string email, string password)
+        public async Task<Users?> GetUserByEmailAndPasswordAsync(string email, string password)
         {
             try
             {
-                // Primeiro, busca o usuário apenas pelo email
-                var user = await _context.Users
-                    .FirstOrDefaultAsync(u => u.Email == email);
 
-                // Se não encontrou o usuário, retorna null
+                
+                // aqui eu verifico se existe o email digitado e se o status do usuário(ativo) é igual a true
+                var user = await _context.Users
+                      .FirstOrDefaultAsync(u => u.Email == email && u.Ativo == true);
+                
                 if (user == null)
                     return null;
 
@@ -255,7 +259,6 @@ namespace TheProject.Infrastructure.Services.User
                 // Verifica se a senha informada confere com o hash salvo
                 var result = passwordHasher.VerifyHashedPassword(user, user.Password, password);
 
-                // Se a senha não confere, retorna null
                 if (result != PasswordVerificationResult.Success)
                     return null;
 

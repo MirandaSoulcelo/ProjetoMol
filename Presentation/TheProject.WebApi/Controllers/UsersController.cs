@@ -47,7 +47,7 @@ public class UsersController : ControllerBase
     [Authorize]
     public async Task<IActionResult> Update([FromBody] UsersDTO dto)
     {
-        // dto.Id = id; 
+        
 
         var result = await _usersInterface.Update(dto);
         if (!result.Status)

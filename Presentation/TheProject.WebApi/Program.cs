@@ -14,6 +14,8 @@ using TheProject.Application.DTOs;
 using TheProject.Application.Validators.Products;
 using TheProject.Application.DTOs.UsersDTO;
 using TheProject.Application.Validators.Users;
+using MediatR;
+using TheProject.Application.Features.Categories.Commands.AddCategory;
 
 
 /*
@@ -65,9 +67,11 @@ builder.Services.AddAuthentication(options =>
 });
 
 
+builder.Services.AddMediatR(typeof(AddCategoryHandler).Assembly);
+
 builder.Services
     .AddFluentValidationAutoValidation() // ativa a validação automática no pipeline
-    .AddFluentValidationClientsideAdapters(); // ativa suporte à validação client-side (opcional, útil se tiver front-end Razor/Blazor)
+    .AddFluentValidationClientsideAdapters(); 
 
 builder.Services.AddValidatorsFromAssemblyContaining<ProductUpdateValidator>(); // registra os validators
 builder.Services.AddScoped<IValidator<ProductDeleteDTO>, ProductDeleteValidator>();
@@ -138,6 +142,7 @@ builder.Services.AddCors(options =>
         policy.AllowAnyOrigin()
               .AllowAnyMethod()
               .AllowAnyHeader();
+              //Eu sei que isso não é recomendado em produção, só permiti pois meu método update preciso dessa permissão
     });
 });
 

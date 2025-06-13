@@ -37,7 +37,7 @@ namespace TheProject.WebApi.Controllers
                 // Buscar usuário por email e senha
                 var user = await _usersService.GetUserByEmailAndPasswordAsync(loginDto.Email, loginDto.Password);
 
-                // Verificar se o usuário foi encontrado
+                
                 if (user == null)
                 {
                     return Unauthorized(new LoginResponseDTO
