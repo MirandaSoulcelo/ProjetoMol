@@ -39,6 +39,7 @@ namespace TheProject.Infrastructure.Services.Product
                 var products = await query
                     .Skip((page - 1) * pageSize)
                     .Take(pageSize)
+                    .Where(p => p.Status)
                     .Select(p => new ProductsDTO
                     {
                         Id = (int)p.Id,

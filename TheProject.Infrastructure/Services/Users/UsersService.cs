@@ -30,10 +30,11 @@ namespace TheProject.Infrastructure.Services.User
             {
 
                 var users = await _context.Users
-                    .Select(c => new UsersDTO
+                    .Where(u => u.Ativo)
+                    .Select(u => new UsersDTO
                     {
-                        Id = (int)c.Id,
-                        Name = c.Name
+                        Id = (int)u.Id,
+                        Name = u.Name
                     })
                     .ToListAsync();
 
