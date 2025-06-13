@@ -201,9 +201,11 @@ namespace TheProject.Infrastructure.Services.Product
                 }
 
                 // Excluir o produto do banco de dados
-                _context.Products.Remove(product);
-                await _context.SaveChangesAsync();
+                 product.Status = false;
 
+                 _context.Products.Update(product);
+                await _context.SaveChangesAsync();
+               
                 response.Data = true;
                 response.Message = "Produto excluído com sucesso";
                 response.Status = true;

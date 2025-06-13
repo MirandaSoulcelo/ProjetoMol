@@ -12,6 +12,8 @@ using FluentValidation.AspNetCore;
 using FluentValidation;
 using TheProject.Application.DTOs;
 using TheProject.Application.Validators.Products;
+using TheProject.Application.DTOs.UsersDTO;
+using TheProject.Application.Validators.Users;
 
 
 /*
@@ -65,6 +67,8 @@ builder.Services
 
 builder.Services.AddValidatorsFromAssemblyContaining<ProductUpdateValidator>(); // registra os validators
 builder.Services.AddScoped<IValidator<ProductDeleteDTO>, ProductDeleteValidator>();
+builder.Services.AddScoped<IValidator<UsersDTO>, UsersValidator>();
+builder.Services.AddScoped<IValidator<UserDeleteDTO>, UsersDeleteValidator>();
 
 
 
