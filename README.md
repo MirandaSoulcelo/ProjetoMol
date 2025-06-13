@@ -1,3 +1,18 @@
+# Algumas Observações
+
+
+   * ao clonar o projeto na máquina, digite o comando dotnet restore na raiz do projeto para que os pacotes sejam instalados corretamente
+
+   * o comando dotnet run deve ser feito dentro do diretório do projeto theProjec.WebApi
+
+   * alguns Endpoints estão protegidos pela tag authorize. Faça login para conseguir testá-los
+
+   * O Endpoint Add User não está protegido, isso facilitará testes via swagger
+
+   * Após Efetuar Login, um Token será gerado, o comando Bearer tokengerado deve ser colado no campo Authorize do Swagger
+
+  
+
 # Teste Desenvolvedor C#
 
 
