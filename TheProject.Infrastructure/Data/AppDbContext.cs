@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TheProject.Domain.Entities;
 
@@ -14,8 +10,7 @@ namespace TheProject.Infrastructure.Data
 
         }
 
-
-        //criando tabelas referenciando Categories e Products :)
+        //criando tabelas referenciando Categories Products e Users:)
         public DbSet<Categories> Categories { get; set; }
 
         public DbSet<Products> Products { get; set; }

@@ -20,7 +20,7 @@ namespace TheProject.Infrastructure.Services.Product
             _validator = validator;
         }
 
-        //por quê async?
+        //por quê async? Estudar durante
         public async Task<Response<List<ProductsDTO>>> GetAll(string? search = null, int page = 1, int pageSize = 10)
         {
             Response<List<ProductsDTO>> response = new Response<List<ProductsDTO>>();
@@ -32,7 +32,9 @@ namespace TheProject.Infrastructure.Services.Product
                 // Filtro de busca no Name
                 if (!string.IsNullOrEmpty(search))
                 {
-                    query = query.Where(p => p.Name.Contains(search));
+
+                    var lowerSearch = search.ToLower();
+                    query = query.Where(p => p.Name.ToLower().Contains(lowerSearch));
                 }
 
                 // Paginação
@@ -61,7 +63,6 @@ namespace TheProject.Infrastructure.Services.Product
             }
         }
 
-
         public async Task<Response<Products>> Update(ProductUptadeDTO dto)
         {
             var response = new Response<Products>();
@@ -74,7 +75,6 @@ namespace TheProject.Infrastructure.Services.Product
                 response.Message = string.Join(" | ", validationResult.Errors.Select(e => e.ErrorMessage));
                 return response;
             }
-
 
             var product = await _context.Products.FindAsync(dto.Id);
             if (product == null)
@@ -165,7 +165,6 @@ namespace TheProject.Infrastructure.Services.Product
             return response;
         }
         
-
         public async Task<Response<bool>> Delete(ProductDeleteDTO dto)
         {
             var response = new Response<bool>();
@@ -181,7 +180,7 @@ namespace TheProject.Infrastructure.Services.Product
                     allErrors.AddRange(validationResult.Errors.Select(e => e.ErrorMessage));
                 }
 
-                // Verificar se o produto existe (só se passou na validação básica)
+                // Verificar se o produto existe 
                 Products product = null;
                 if (!allErrors.Any())
                 {

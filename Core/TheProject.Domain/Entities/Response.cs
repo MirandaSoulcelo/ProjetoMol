@@ -8,7 +8,7 @@ namespace TheProject.Domain.Entities
     public class Response<T>
     {
 
-        //Genérico para ser usado com varias models e ainda por cima nulo fi
+        // T Genérico para ser usado com varias models e ainda por cima nulo 
         public T? Data { get; set; }
         public string Message { get; set; } = string.Empty;
 

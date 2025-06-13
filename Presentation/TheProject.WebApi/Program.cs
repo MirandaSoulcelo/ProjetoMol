@@ -16,24 +16,19 @@ using TheProject.Application.DTOs.UsersDTO;
 using TheProject.Application.Validators.Users;
 using MediatR;
 using TheProject.Application.Features.Categories.Commands.AddCategory;
-
-
+using TheProject.Application.DTOs.UsersUpdateDTO;
 /*
 cd caminho/para/TheProject.WebApi
 dotnet add package FluentValidation
 dotnet add package FluentValidation.AspNetCore só lembrando os pacotes que usei pra validar erros
 */
 
-
 var builder = WebApplication.CreateBuilder(args);
 //Aqui estou definindo a chave 'secreta' para assinar o token
 var secretKey = builder.Configuration["Jwt:SecretKey"];
 var key = Encoding.ASCII.GetBytes(secretKey);
 
-
-
 builder.Services.AddControllers();
-
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -61,7 +56,7 @@ builder.Services.AddAuthentication(options =>
 
         // nem o público
         ValidateAudience = false,
-        //sem tolerância, igual a igreja católica no período da inquisição
+        //sem tolerância
         ClockSkew = TimeSpan.Zero
     };
 });
@@ -77,10 +72,7 @@ builder.Services.AddValidatorsFromAssemblyContaining<ProductUpdateValidator>(); 
 builder.Services.AddScoped<IValidator<ProductDeleteDTO>, ProductDeleteValidator>();
 builder.Services.AddScoped<IValidator<UsersDTO>, UsersValidator>();
 builder.Services.AddScoped<IValidator<UserDeleteDTO>, UsersDeleteValidator>();
-
-
-
-
+builder.Services.AddScoped<IValidator<UsersUpdateDTO>, UsersUpdateValidator>();
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -116,10 +108,6 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-
-
-
-
 builder.Services.AddScoped<TokenService>(provider => new TokenService(secretKey));
 
 builder.Services.AddAuthorization();
@@ -127,7 +115,6 @@ builder.Services.AddAuthorization();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 
 //criando a forma de comunição entre interface e serviços
 builder.Services.AddScoped<IProductsInterface, ProductsService>();
@@ -176,7 +163,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 // Configure the HTTP request pipeline.
-
 
 app.Run();
 

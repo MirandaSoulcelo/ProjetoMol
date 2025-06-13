@@ -1,19 +1,20 @@
-
 using FluentValidation;
-using TheProject.Application.DTOs.UsersDTO;
-
+using TheProject.Application.DTOs.UsersUpdateDTO;
 namespace TheProject.Application.Validators.Users
 {
-    public class UsersValidator : AbstractValidator<UsersDTO>
+    public class UsersUpdateValidator : AbstractValidator<UsersUpdateDTO>
     {
-            public UsersValidator()
+            public UsersUpdateValidator()
         {
-        
+
+            RuleFor(x => x.Id)
+                .GreaterThan(0).WithMessage("Coloque um Id válido para o Usuário.");
+            
             RuleFor(x => x.Name)
                 .NotEmpty().WithMessage("Nome obrigatório.")
                 .MaximumLength(100).WithMessage("Nome deve ter até 100 caracteres.");
 
-             RuleFor(x => x.Email)
+            RuleFor(x => x.Email)
                 .EmailAddress().WithMessage("Formato de email inválido.")
                 .NotEmpty().WithMessage("Email obrigatório.")
                 .MaximumLength(100).WithMessage("Email deve ter até 100 caracteres.")

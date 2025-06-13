@@ -1,9 +1,6 @@
 using FluentValidation;
 using TheProject.Application.DTOs;
-
-
-
-  public class ProductUpdateValidator : AbstractValidator<ProductUptadeDTO>
+    public class ProductUpdateValidator : AbstractValidator<ProductUptadeDTO>
 {   
     public ProductUpdateValidator(bool isUpdate = false)
     {

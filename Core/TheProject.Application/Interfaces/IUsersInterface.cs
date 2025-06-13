@@ -1,5 +1,5 @@
-
 using TheProject.Application.DTOs.UsersDTO;
+using TheProject.Application.DTOs.UsersUpdateDTO;
 using TheProject.Domain.Entities;
 
 namespace TheProject.Application.Interfaces
@@ -9,7 +9,7 @@ namespace TheProject.Application.Interfaces
         Task<Response<List<UsersDTO>>> GetAll();
         Task<Response<UsersDTO>> Add(UsersDTO dto);
 
-        Task<Response<Users>> Update(UsersDTO dto);
+        Task<Response<Users>> Update(UsersUpdateDTO dto);
 
         Task<Response<bool>> Delete(UserDeleteDTO dto);
 

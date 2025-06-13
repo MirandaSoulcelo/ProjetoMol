@@ -1,5 +1,4 @@
 
-
 namespace TheProject.Application.DTOs
 {
     public class ProductsDTO

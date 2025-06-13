@@ -1,27 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\marcelo.miranda\\Documents\\TheProject\\ProjetoMol\\Core\\TheProject.Domain\\TheProject.Domain.csproj": {}
+    "C:\\Users\\Marce\\OneDrive\\Documents\\FinalProject\\WebAPI-DotNet8\\Core\\TheProject.Domain\\TheProject.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\marcelo.miranda\\Documents\\TheProject\\ProjetoMol\\Core\\TheProject.Domain\\TheProject.Domain.csproj": {
+    "C:\\Users\\Marce\\OneDrive\\Documents\\FinalProject\\WebAPI-DotNet8\\Core\\TheProject.Domain\\TheProject.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\marcelo.miranda\\Documents\\TheProject\\ProjetoMol\\Core\\TheProject.Domain\\TheProject.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Marce\\OneDrive\\Documents\\FinalProject\\WebAPI-DotNet8\\Core\\TheProject.Domain\\TheProject.Domain.csproj",
         "projectName": "TheProject.Domain",
-        "projectPath": "C:\\Users\\marcelo.miranda\\Documents\\TheProject\\ProjetoMol\\Core\\TheProject.Domain\\TheProject.Domain.csproj",
-        "packagesPath": "C:\\Users\\marcelo.miranda\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\marcelo.miranda\\Documents\\TheProject\\ProjetoMol\\Core\\TheProject.Domain\\obj\\",
+        "projectPath": "C:\\Users\\Marce\\OneDrive\\Documents\\FinalProject\\WebAPI-DotNet8\\Core\\TheProject.Domain\\TheProject.Domain.csproj",
+        "packagesPath": "C:\\Users\\Marce\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Marce\\OneDrive\\Documents\\FinalProject\\WebAPI-DotNet8\\Core\\TheProject.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\marcelo.miranda\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Marce\\OneDrive\\Documents\\FinalProject\\WebAPI-DotNet8\\NuGet.Config",
+          "C:\\Users\\Marce\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -60,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.411/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

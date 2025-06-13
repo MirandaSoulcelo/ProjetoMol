@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using TheProject.Application.DTOs.Auth;
 using TheProject.Application.Interfaces;
-using TheProject.Infrastructure.Services;
 
 namespace TheProject.WebApi.Controllers
 {
@@ -58,7 +57,7 @@ namespace TheProject.WebApi.Controllers
                     Token = token
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return StatusCode(500, new LoginResponseDTO
                 {

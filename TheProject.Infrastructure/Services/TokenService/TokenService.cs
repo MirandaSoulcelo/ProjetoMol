@@ -1,4 +1,3 @@
-using System;
 using System.IdentityModel.Tokens.Jwt; //fornece a funcionalidade de criar e manipular tokens JWT
 using System.Security.Claims; // permite trabalhar com "claims" (informações embutidas no token), não posso esquecer.
 using System.Text;

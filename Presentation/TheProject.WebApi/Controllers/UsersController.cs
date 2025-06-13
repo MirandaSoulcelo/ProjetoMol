@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TheProject.Application.DTOs.UsersDTO;
+using TheProject.Application.DTOs.UsersUpdateDTO;
 using TheProject.Application.Interfaces;
 using TheProject.Domain.Entities;
 
@@ -45,7 +46,7 @@ public class UsersController : ControllerBase
 
     [HttpPut("Update")]
     [Authorize]
-    public async Task<IActionResult> Update([FromBody] UsersDTO dto)
+    public async Task<IActionResult> Update([FromBody] UsersUpdateDTO dto)
     {
         
 

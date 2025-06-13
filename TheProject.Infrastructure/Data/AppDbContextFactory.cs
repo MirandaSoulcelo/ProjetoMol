@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-using System.IO;
 
 namespace TheProject.Infrastructure.Data
 {
@@ -9,10 +8,10 @@ namespace TheProject.Infrastructure.Data
     {
         public AppDbContext CreateDbContext(string[] args)
         {
-            // Caminho para o appsettings.json (ajuste se necessário)
+            // Caminho para o appsettings.json 
             var basePath = Directory.GetCurrentDirectory();
             
-            // Se estiver rodando de WebApi, volta uma pasta
+            // Se estiver rodando de WebApi, volto uma pasta
             if (!File.Exists(Path.Combine(basePath, "appsettings.json")))
             {
                 basePath = Path.Combine(basePath, "../TheProject.WebApi");

@@ -1,13 +1,13 @@
-using System.ComponentModel.DataAnnotations;
+
 using FluentValidation;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TheProject.Application.DTOs.UsersDTO;
+using TheProject.Application.DTOs.UsersUpdateDTO;
 using TheProject.Application.Interfaces;
 using TheProject.Application.Validators.Users;
 using TheProject.Domain.Entities;
 using TheProject.Infrastructure.Data;
-
 
 namespace TheProject.Infrastructure.Services.User
 {
@@ -15,12 +15,15 @@ namespace TheProject.Infrastructure.Services.User
     {
         private readonly AppDbContext _context;
         private readonly IValidator<UsersDTO> _validator;
+
+        private readonly IValidator<UsersUpdateDTO> _updateValidator;
         private readonly PasswordHasher<Users> _passwordHasher = new PasswordHasher<Users>();
 
-        public UsersService(AppDbContext context, IValidator<UsersDTO> validator)
+        public UsersService(AppDbContext context, IValidator<UsersDTO> validator, IValidator<UsersUpdateDTO> updateValidator)
         {
             _context = context;
             _validator = validator;
+            _updateValidator = updateValidator;
         }
 
         public async Task<Response<List<UsersDTO>>> GetAll()
@@ -117,16 +120,12 @@ namespace TheProject.Infrastructure.Services.User
             }
         }
 
-
-
-
-
-        public async Task<Response<Users>> Update(UsersDTO dto)
+        public async Task<Response<Users>> Update(UsersUpdateDTO dto)
         {
             var response = new Response<Users>();
 
             // Validação SINCRONA do DTO via FluentValidation (regras locais)
-            var validationResult = await _validator.ValidateAsync(dto);
+            var validationResult = await _updateValidator.ValidateAsync(dto);
             if (!validationResult.IsValid)
             {
                 response.Status = false;
@@ -142,9 +141,6 @@ namespace TheProject.Infrastructure.Services.User
                 response.Message = "usuário não encontrado";
                 return response;
             }
-
-
-
 
             var duplicateEmail = await _context.Users
                 .AnyAsync(u => u.Email.ToLower() == dto.Email.ToLower() && u.Id != dto.Id);
@@ -163,7 +159,7 @@ namespace TheProject.Infrastructure.Services.User
             user.Ativo = dto.Ativo;
 
             var passwordHasher = new PasswordHasher<Users>();
-                // Gerar o hash com a senha do DTO
+            // Gerar o hash com a senha do DTO
             user.Password = passwordHasher.HashPassword(user, dto.Password);
 
             await _context.SaveChangesAsync();
@@ -173,17 +169,10 @@ namespace TheProject.Infrastructure.Services.User
             response.Status = true;
             return response;
         }
-
-
-
-
         public async Task<Response<bool>> Delete(UserDeleteDTO dto)
         {
             var response = new Response<bool>();
             var allErrors = new List<string>();
-
-
-            
 
             try
             {
@@ -237,20 +226,16 @@ namespace TheProject.Infrastructure.Services.User
             }
         }
 
-
-
-
-
         public async Task<Users?> GetUserByEmailAndPasswordAsync(string email, string password)
         {
             try
             {
 
-                
+
                 // aqui eu verifico se existe o email digitado e se o status do usuário(ativo) é igual a true
                 var user = await _context.Users
                       .FirstOrDefaultAsync(u => u.Email == email && u.Ativo == true);
-                
+
                 if (user == null)
                     return null;
 
@@ -268,6 +253,9 @@ namespace TheProject.Infrastructure.Services.User
             catch (Exception)
             {
                 return null;
+
             }
-    }  }
+        }
+    }
+    
 }
